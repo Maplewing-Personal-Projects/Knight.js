@@ -1,3 +1,2 @@
 Knight.Color = (function(){
-
 })();

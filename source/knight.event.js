@@ -5,6 +5,7 @@ Knight.Event = (function(){
 	Event.prototype.addEventListener = function(event, listener){
 		if(!this['_'+event]) this['_'+event] = [];
 		this['_'+event].push(listener);
+		this.triggerEvent('addEventListener', event, listener);
 	}
 
 	Event.prototype.removeEventListener = function(event, listener){
@@ -16,22 +17,24 @@ Knight.Event = (function(){
 				}
 			}
 		}
+		this.triggerEvent('removeEventListener', event, listener);
 	}
 
 	Event.prototype.triggerEvent = function(event){
+		var args = Array.prototype.slice.call( arguments, 1 );
 		if(this['on'+event] && typeof this['on'+event] === 'function'){
-			this['on'+event].call(this);
+			this['on'+event].apply(this, args);
 		}
 
 		if(this['_'+event]){
 			var execute = this['_'+event];
 			if(execute.constructor === Array){
 				for( var i = 0 ; i < execute.length ; ++i ){
-					execute[i].call(this);
+					execute[i].apply(this, args);
 				}
 			}
 			else if(typeof execute === 'function'){
-				execute.call(this);
+				execute.apply(this, args);
 			}
 		}
 	}

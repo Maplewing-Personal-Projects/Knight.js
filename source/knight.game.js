@@ -1,11 +1,12 @@
-var Knight = {};
 Knight.Game = (function(){
-	Knight.Utility.extend(Game, Knight.Event);
+	
 	function Game(canvas, fps){
 		if(!fps) fps = 60;
 		this._canvas = canvas;
 		this._fps = fps;
 	}
+
+	Knight.Utility.extend(Game, Knight.Event);
 
 	Game.prototype.run = function(){
 		setInterval( function(){

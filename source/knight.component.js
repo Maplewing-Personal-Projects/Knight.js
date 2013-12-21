@@ -29,8 +29,8 @@ Knight.Component = (function(){
 			this._game.addEventListener.apply(this._game, 'update', this._update);
 		if( this._draw )
 			this._game.addEventListener.apply(this._game, 'draw', this._draw);
-		this.addEventListener('addEventListener', _afterAdd);
-		this.addEventListener('removeEventListener', _afterRemove);
+		this.addEventListener('addeventlistener', _afterAdd);
+		this.addEventListener('removeeventlistener', _afterRemove);
 		this.contain = true;
 	}
 
@@ -39,8 +39,8 @@ Knight.Component = (function(){
 			this._game.removeEventListener.apply(this._game, 'update', this._update);
 		if( this._draw )
 			this._game.removeEventListener.apply(this._game, 'draw', this._draw);
-		this.removeEventListener('addEventListener', _afterAdd);
-		this.removeEventListener('removeEventListener', _afterRemove);
+		this.removeEventListener('addeventlistener', _afterAdd);
+		this.removeEventListener('removeeventlistener', _afterRemove);
 		this.contain = false;
 	}
 

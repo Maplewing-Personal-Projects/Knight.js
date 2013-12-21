@@ -5,7 +5,7 @@ Knight.Event = (function(){
 	Event.prototype.addEventListener = function(event, listener){
 		if(!this['_'+event]) this['_'+event] = [];
 		this['_'+event].push(listener);
-		this.triggerEvent('addEventListener', event, listener);
+		this.triggerEvent('addeventlistener', event, listener);
 	}
 
 	Event.prototype.removeEventListener = function(event, listener){
@@ -17,7 +17,7 @@ Knight.Event = (function(){
 				}
 			}
 		}
-		this.triggerEvent('removeEventListener', event, listener);
+		this.triggerEvent('removeeventlistener', event, listener);
 	}
 
 	Event.prototype.triggerEvent = function(event){
